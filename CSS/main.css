@@ -1,0 +1,123 @@
+/* image source: http://commons.wikimedia.org/wiki/File:Electric_guitar_(477100921).jpg */
+*{
+    box-sizing: border-box;
+}
+html, body {
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:'Shadows Into Light', sans-serif;
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+    background: url('../img/Electric_guitar_(477100921).jpg') no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-color: #000;
+}
+
+/* main wrapper */
+
+.main{
+    max-width: 60em;
+    margin: 5em auto;
+    padding-top:0.5em;
+    padding-bottom: 1em;
+    background-color: rgba(255,255,255, 0.75);
+    border-radius: 10px;
+}
+#header h1{
+    text-align: center;
+    font-family: 'Monoton', sans-serif;
+    font-size: 3em;
+    color: red;
+    margin-bottom:0;
+}
+#header h2{
+    text-align: center;
+    font-family: 'Contrail One', sans-serif;
+    font-size: 2em;
+    margin-top:0;
+}
+
+/* game info section */
+
+#game-info{
+  padding: 0 5em;
+  width: 75%;
+  margin: 0 auto;
+}
+#game-info:after{
+    display:table;
+    content: '';
+    clear: both;
+}
+#game-info h3{
+    font-size: 1.5em;
+}
+h3.score-info{
+    float: left;
+}
+h3.q-info{
+    float:right;
+}
+
+/* question box styles */
+.question-box{
+    width:50%;
+    border-radius: 1em;
+    background: red;
+    padding: 5px;
+    margin: 0 auto;
+}
+.question-box h3{
+    color:#eee;
+    text-align:center;
+    font-size: 1.25em;
+    font-family: sans-serif;
+}
+
+/*list answer styles*/
+
+ul#answers{
+    list-style-type:none;
+    margin: 2em auto;
+    width: 50%;
+    padding: 0;
+}
+ul#answers li {
+    text-align:left;
+    font-size: 1.5em;
+}
+
+/* button styles */
+
+.buttons{
+    width: 50%;
+    margin: 1em auto;
+}
+.buttons:after{
+    display: table;
+    content: '';
+    clear:both;
+}
+p.correct{
+    float:left;
+    width: 50%;
+    margin: 0;
+    color: darkred;
+    padding: 3px;
+    font-size: 1.25em;
+}
+button.next{
+    float: right;
+    height: 2em;
+    width: 4em;
+    font-size: 1em;
+}
+
+button.next:hover{
+    cursor: pointer;
+}
+    
