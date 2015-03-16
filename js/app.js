@@ -1,9 +1,17 @@
-$(document).ready(function(){
-  quizSetup();  
-});
-
+//global variables
+var userSelect = "";
+var selectedAnswer= "";
 var question = new Array();
 
+$(document).ready(function(){
+  quizSetup();
+  userChoice();
+});
+
+
+
+
+//object arranging questions and answers
 function questionSetup(current, answers, correct){
     
     this.current = current;
@@ -18,6 +26,8 @@ question[2]= new questionSetup("Which member's father is the owner of Elite Mode
 question[3]= new questionSetup("Which song was removed off the US release of 'This Is It' because of 9/11?",["Barely Legal","One Way Trigger","New York City Cops"],3);
 question[4]= new questionSetup("Which female rock star wrote a love song about Julian?",["Karen O","Courtney Love","Alison Mosshart"], 2);
 
+   
+
 function quizSetup(){
     //variables to sort through array
     var questionCounter = 0;
@@ -28,25 +38,41 @@ function quizSetup(){
     //loops through the answers
     var writeAnswers = function(){ 
         for( var i = 0; i < currentAnswers.length; i++){
-        var answerIndex = '<li><input type="radio"> '+currentAnswers[i]+'</li>';
+        var answerIndex = '<li><input type="radio" class="answer" value="'+currentAnswers[i]+'" > '+currentAnswers[i]+'</li>';
             $('#answers').append(answerIndex).hide().delay(1000).slideDown('slow');    
         }
      
     }
 
     //writes to the page
-    $('#question').html(currentQuestion).hide().fadeIn('slow');
+                $('#question').html(currentQuestion).hide().fadeIn('slow');
     $('#answers').html(writeAnswers);
   
-    //comparing correct answer
     
+}
+ 
+
+//storing user selection
+
+     function userChoice(){
+         
+         $('.answer').click(function(){
+                if($("input[type='radio']").is(':checked')){ 
+   	                    compare();
+   	                    $('.answer').attr('disabled',true); 
+                    }
+                });  
+         
+     }
+        
+    
+   //comparing correct answer
     
     function compare(){
-        var a = currentAnswers[currentCorrect];
-        if (blank.value() == currentCorrect){
-            $('.correct').html('Correct!');
-        } else {
-            $('.correct').html(a);
-        }
+        var selected = $("input[type='radio']:checked");
+	       if (selected.length >= 0) {
+    	           selectedAnswer = selected.val();
+               console.log(selectedAnswer);
+	           }
     }
-}
+    
