@@ -1,6 +1,8 @@
 //global variables
 var userSelect = "";
 var selectedAnswer= "";
+var score = 0;
+var questionNumber = 1;
 var question = new Array();
 
 $(document).ready(function(){
@@ -72,7 +74,6 @@ function quizSetup(){
    //comparing correct answer
     
     function compare(){
-        var score = 0;
         var compareCorrect = currentAnswers[currentCorrect-1];
         var selected = $("input[type='radio']:checked");
         
@@ -95,18 +96,28 @@ function quizSetup(){
 function nextQuestion(){
     
     $('.next').click(function(){
+        
+        if(questionCounter < 4){  
+            
         questionCounter++;
+        questionNumber++;    
         currentQuestion = question[questionCounter].current;
         currentAnswers = question[questionCounter].answers;
         currentCorrect = question[questionCounter].correct;
         console.log(currentAnswers);
         $('#question').html(currentQuestion);
+        $('#qNum').html(questionNumber);    
         $('#answers li').remove();
         $('.correct').empty();
         quizSetup();
+        userChoice();
         
-        
-             
+        } else {
+            $('#question').html('Quiz Over');
+            $('#answers li').remove();
+            $('.correct').remove();
+        }
+      
     });
 }
 
