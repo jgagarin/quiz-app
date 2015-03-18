@@ -6,6 +6,7 @@ var question = new Array();
 $(document).ready(function(){
   quizSetup();
   userChoice();
+  nextQuestion();
 });
 
 
@@ -27,13 +28,14 @@ question[3]= new questionSetup("Which song was removed off the US release of 'Th
 question[4]= new questionSetup("Which female rock star wrote a love song about Julian?",["Karen O","Courtney Love","Alison Mosshart"], 2);
 
    
-
-function quizSetup(){
-    //variables to sort through array
+//variables to sort through array
     var questionCounter = 0;
     var currentQuestion = question[questionCounter].current;
     var currentAnswers = question[questionCounter].answers;
     var currentCorrect = question[questionCounter].correct;
+
+function quizSetup(){
+    
     
     //loops through the answers
     var writeAnswers = function(){ 
@@ -59,7 +61,8 @@ function quizSetup(){
          $('.answer').click(function(){
                 if($("input[type='radio']").is(':checked')){ 
    	                    compare();
-   	                    $('.answer').attr('disabled',true); 
+   	                    $('.answer').attr('disabled',true);
+                       
                     }
                 });  
          
@@ -69,10 +72,25 @@ function quizSetup(){
    //comparing correct answer
     
     function compare(){
+        var compareCorrect = currentAnswers[currentCorrect-1];
         var selected = $("input[type='radio']:checked");
 	       if (selected.length >= 0) {
     	           selectedAnswer = selected.val();
                console.log(selectedAnswer);
 	           }
+         if(selectedAnswer == compareCorrect){
+             $('.correct').html('Correct');
+         } else { $('.correct').html(compareCorrect);}
+        
     }
+
+//Next question
+function nextQuestion(){
+    $('.next').click(function(){
+         questionCounter++;
+        console.log(questionCounter);
+        
+             
+    });
+}
     
