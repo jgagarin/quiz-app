@@ -116,6 +116,7 @@ function nextQuestion(){
             $('#question').html('Quiz Over');
             $('#answers li').remove();
             $('.correct').remove();
+            $('.next').hide();
         }
       
     });
