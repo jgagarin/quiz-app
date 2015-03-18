@@ -88,7 +88,14 @@ function quizSetup(){
 function nextQuestion(){
     $('.next').click(function(){
          questionCounter++;
-        console.log(questionCounter);
+        currentQuestion = question[questionCounter].current;
+        currentAnswers = question[questionCounter].answers;
+        currentCorrect = question[questionCounter].correct;
+        console.log(currentAnswers);
+        $('#question').html(currentQuestion);
+        $('#answers li').remove();
+        quizSetup();
+        
         
              
     });
