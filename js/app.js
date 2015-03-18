@@ -72,32 +72,44 @@ function quizSetup(){
    //comparing correct answer
     
     function compare(){
+        var score = 0;
         var compareCorrect = currentAnswers[currentCorrect-1];
         var selected = $("input[type='radio']:checked");
+        
 	       if (selected.length >= 0) {
     	           selectedAnswer = selected.val();
                console.log(selectedAnswer);
 	           }
          if(selectedAnswer == compareCorrect){
              $('.correct').html('Correct');
-         } else { $('.correct').html(compareCorrect);}
+             score += 10;
+             $('#score').html(score);
+             
+         } else { 
+             $('.correct').html(compareCorrect);
+         }
         
     }
 
-//Next question
+//Moving to next question
 function nextQuestion(){
+    
     $('.next').click(function(){
-         questionCounter++;
+        questionCounter++;
         currentQuestion = question[questionCounter].current;
         currentAnswers = question[questionCounter].answers;
         currentCorrect = question[questionCounter].correct;
         console.log(currentAnswers);
         $('#question').html(currentQuestion);
         $('#answers li').remove();
+        $('.correct').empty();
         quizSetup();
         
         
              
     });
 }
+
+
+
     
